@@ -7,6 +7,14 @@ project (raylib_cpp
     LANGUAGES C CXX
 )
 
+LIST(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
+INCLUDE(cmake/ModuleImport.cmake)
+INCLUDE(cmake/ModuleCompileOptions.cmake)
+ModuleSetCompileOptions()
+ModuleSetWinCompilerFlags()
+
+ModuleImport("dmraylib" "thirdparty/dmraylib")
+
 # Options
 if ("${CMAKE_SOURCE_DIR}" STREQUAL "${CMAKE_CURRENT_SOURCE_DIR}")
     set(RAYLIB_CPP_IS_MAIN TRUE)
