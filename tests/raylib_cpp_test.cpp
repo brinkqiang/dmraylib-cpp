@@ -81,28 +81,28 @@ int main(int argc, char* argv[]) {
     {
         std::string input = "Hello World!";
         std::string output = raylib::TextReplace(input, "World", "Moon");
-        AssertEqual(output, "Hello Moon!");
+        Assert(output == "Hello Moon!");
     }
 
     // raylib::TextInsert()
     {
         std::string input = "Hello World!";
         std::string output = raylib::TextInsert(input, "Good!", 0);
-        AssertEqual(output, "Good! World!");
+        Assert(output =="Good! World!");
     }
 
     // raylib::TextSubtext()
     {
         std::string input = "Hello World!";
         std::string output = raylib::TextSubtext(input, 6, 5);
-        AssertEqual(output, "World");
+        Assert(output == "World");
     }
 
     // TextSplit
     {
         std::vector<std::string> output = raylib::TextSplit("Hello|How|Are|You", '|');
         AssertEqual(output.size(), 4);
-        AssertEqual(output[1], "How");
+        Assert(output[1] == "How");
     }
 
     // Wave
@@ -133,7 +133,7 @@ int main(int argc, char* argv[]) {
     {
         raylib::FileText text(path + "/resources/lorem.txt");
         Assert(text.GetLength() > 0, "Expected file to be loaded correctly");
-        AssertEqual(text.ToString().substr(0, 5), "Lorem");
+        Assert(text.ToString().substr(0, 5) == "Lorem");
     }
 
     TraceLog(LOG_INFO, "TEST: raylib-cpp test");
